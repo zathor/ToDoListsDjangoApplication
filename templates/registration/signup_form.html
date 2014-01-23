@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+
+{% block container %}
+    <div class="content">
+        {% if form.errors %}
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {% if form.non_field_errors %}
+                <strong>Oops!</strong> {{ form.non_field_errors|join:'<br/>' }}
+            {% else %}
+                <strong>Oops!</strong> Please correct the error(s) below
+            {% endif %}
+        </div>
+        {% endif %}
+        <form action="{% url 'signup' %}" method="post" id="signup-form">{% csrf_token %}
+            <fieldset>
+                <legend>Sign up</legend>
+                {% for field in form %}
+                    {% include 'registration/form_field.html' %}
+                {% endfor %}
+                <div class="actions">
+                    <input type="submit" class="btn btn-primary" value="Sign up">
+                </div>
+            </fieldset>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}" class="btn btn-info btn-mini">Log in</a>
+    </div>
+{% endblock %}

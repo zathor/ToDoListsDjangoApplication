@@ -1,0 +1,1 @@
+{{ user.username }}, active your account at {{ site_name }}

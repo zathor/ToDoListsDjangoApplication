@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+
+{% block container %}
+    <div class="content">
+        {% if form.errors %}
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {% if form.non_field_errors %}
+                <strong>Oops!</strong> {{ form.non_field_errors|join:'<br/>' }}
+            {% else %}
+                <strong>Oops!</strong> Please correct the error(s) below
+            {% endif %}
+        </div>
+        {% endif %}
+        <form action="{% url 'login' %}" method="post" id="login-form">{% csrf_token %}
+            <fieldset>
+                <legend>Log in</legend>
+                {% for field in form %}
+                    {% include 'registration/form_field.html' %}
+                {% endfor %}
+                <div class="actions">
+                    <input type="submit" class="btn btn-primary" value="Log in">
+                </div>
+            </fieldset>
+        </form>
+        <p>Forgot your password? <a href="{% url 'password_reset' %}" class="btn btn-info btn-mini">Reset password</a></p>
+        <p>Still not have an account? <a href="{% url 'signup' %}" class="btn btn-info btn-mini">Join us</a></p>
+    </div>
+{% endblock %}

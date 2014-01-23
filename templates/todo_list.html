@@ -1,0 +1,26 @@
+<div class="well well-large" id="todolist-{{ list.pk }}">
+    <button type="button" class="close" aria-hidden="true" onclick="remove_item('{{ list.pk }}','ToDoList','')">
+		<i class="icon-trash"></i>
+	</button>
+	<div class="progress progress-striped active">
+		<div class="bar" style="width: {{ list.progress }}%;" id="progress-bar-list-{{ list.pk }}"></div>
+	</div>
+	
+    <h3>
+    	<i class="icon-list-alt"></i>
+    	<a class = "editable" data-model="ToDoList" data-pk="{{ list.pk }}">
+    		{{ list.name }}
+    	</a>
+    	<i class="icon-edit"></i>
+    </h3>
+    <h4>Tasks:</h4>
+    <div id="tasks-{{ list.pk }}">
+	    {% for task in list.task_set.all %}
+	    	{% include 'task.html' %}
+	    {% endfor %}
+	</div>
+	<div class="form-horizontal">
+		<input class="input-large addItem-input" type="text" placeholder="Enter task" data-model="Task" data-parent-pk="{{ list.pk }}" id="addTask-{{ list.pk }}"/>
+		<button class="btn btn-success" onclick="var val = document.getElementById('addTask-{{ list.pk }}').value; document.getElementById('addTask-{{ list.pk }}').value='';add_item(val,'Task','{{ list.pk }}');"><i class="icon-plus"></i> Add Task</button>
+	</div>
+</div>

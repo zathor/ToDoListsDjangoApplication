@@ -1,0 +1,25 @@
+<div class="well well-small" id="task-{{ task.pk }}">
+	<button type="button" class="close" aria-hidden="true" onclick="remove_item('{{ task.pk }}','Task',{{ task.to_do_list.pk }})">
+		<i class="icon-trash"></i>
+	</button>
+	<div class="btn-group" id="status-task-{{ task.pk }}">
+		<button class="statusButton btn btn-mini{% if task.status == 'To Do' %} btn-primary{% endif %}" data-pk="{{ task.pk }}" data-parent-pk="{{ task.to_do_list.pk }}" value="To Do" id="status-task-To-Do-{{ task.pk }}">To Do</button>
+		<button class="statusButton btn btn-mini{% if task.status == 'In Progress' %} btn-primary{% endif %}" data-pk="{{ task.pk }}" data-parent-pk="{{ task.to_do_list.pk }}" value="In Progress" id="status-task-In-Progress-{{ task.pk }}">In Progress</button>
+		<button class="statusButton btn btn-mini{% if task.status == 'Done' %} btn-primary{% endif %}" data-pk="{{ task.pk }}" data-parent-pk="{{ task.to_do_list.pk }}" value="Done" id="status-task-Done-{{ task.pk }}">Done</button>
+	</div>
+	<h5>
+		<i class="icon-tasks"></i>
+		<a class = "editable" data-model="Task" data-pk="{{ task.pk }}" data-parent-pk="{{ task.to_do_list.pk }}">
+			{{ task.task }}
+		</a>
+		<i class="icon-edit"></i>
+	</h5>
+	
+	<h5>
+		<i class="icon-tags"></i>
+		Tags: <a class = "editable" data-model="Tag" data-pk="none" data-parent-pk="{{ task.pk }}" data-url="{% url 'process_operation' %}">
+			{{ task.get_tags_str }}
+		</a>
+		<i class="icon-edit"></i>
+	</h5>
+</div>

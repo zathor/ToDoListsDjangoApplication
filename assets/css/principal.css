@@ -1,0 +1,15 @@
+body {
+	color: white;
+	background-size: cover;
+	background-position: center;
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+legend {
+	color: #FFFF66;
+}
+
+#todolists {
+	color:black;
+}

@@ -1,0 +1,18 @@
+This project is a To-Do Lists Web Application developed using Django 1.6 and Python 2.7. Web design was based on bootstrap and data updates are managed with ajax.
+I'm using the X-editable javascript libraries for editing.
+
+Features:
+
+	* User authentication system.
+	* User may have one or more To-Do Lists.
+	* User can create, edit or remove To-Do lists.
+	* Each To-Do list may have one or more Tasks.
+	* User can create, edit or remove tasks for each To-Do list.
+	* Each Task may have one or more Tags.
+	* Tags are simply words like "interesting" or "fun".
+
+Constraints:
+
+	Before Set Up site, if you decide to drop down the database, create an admin Site with full-permision user. Then, configure Site 1 by setting domain and name.
+
+	Before you run your the app, you must know what is configured on site domain. Example: Domain "localhost:8000", Name: "whatToDoNow". On this example, you must run with "python manage.py runserver 8000" on localhost. Name could be whatever.
